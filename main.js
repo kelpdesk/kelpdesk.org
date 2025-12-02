@@ -102,3 +102,46 @@ const phoneInput = document.getElementById('phone');
 
 // Script URL for Google Sheets
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxx9U1I-pX5rtRiT8bQy4cweS9BQaGnNUylXWVRlNc5RWd8Mg6VmAjBjzo96edj3Tvelw/exec';
+
+// --- Form Submission Logic ---
+  if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      // 1. Validation: Ensure either Email or Phone is provided
+      if (!emailInput.value && !phoneInput.value) {
+        alert("Please provide either an Email or Phone number so we can reach you.");
+        return;
+      }
+
+      // 2. UX: Disable button and show loading state
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.innerText = "Sending...";
+      }
+
+      // 3. Prepare Data
+      // We create a FormData object from the form element
+      let requestBody = new FormData(contactForm);
+
+      // 4. Send Data to Google Sheets
+      fetch(scriptURL, { method: 'POST', body: requestBody})
+        .then(response => {
+            // Success!
+            if (successMessage) {
+                successMessage.classList.remove('hidden');
+            }
+            contactForm.classList.add('hidden'); // Hide the form
+            contactForm.reset(); // Clear the inputs
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("Something went wrong. Please try again.");
+            // Reset button on error so they can try again
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.innerText = "Send Message";
+            }
+        });
+    });
+  }
