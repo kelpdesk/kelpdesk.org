@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KelpDesk</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Bubblegum+Sans&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-ocean-mist text-dark">
+    
+    <video autoplay loop muted playsinline class="fixed inset-0 w-full h-full object-cover opacity-40 -z-20">
+        <source src="kelpforest.mp4" type="video/mp4">
+    </video>
+
+    <div class="fixed inset-0 bg-gradient-to-b from-[#D8A8A0]/40 to-[#A0B0A8]/60 -z-10"></div>
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out h-screen flex flex-col justify-center items-center p-4">
+        
+        <div id="brand-container" class="flex flex-col items-center transition-all duration-700 gap-4">
+
+            <div id="logo-wrapper" class="relative w-32 md:w-52 h-auto aspect-square transition-all duration-700">
+
+                <img 
+                src="kelpdeskicon.png" 
+                alt="KelpDesk Large" 
+                class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100" 
+                id="logo-big"
+                >
+
+                <img 
+                src="kelpdesksimplifiedicon.png" 
+                alt="KelpDesk Simple" 
+                class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" 
+                id="logo-small"
+                >
+            </div>
+
+            <div class="text-center transition-all duration-700">
+                <h1 id="brand-title" class="font-bubblegum text-6xl md:text-8xl text-deep-sea transition-all duration-700 leading-none">
+                    KelpDesk
+                </h1>
+                <p id="brand-tagline" class="font-birthstone text-4xl md:text-5xl text-dark transition-all duration-700 opacity-100">
+                    Fortifying Digital Institutions
+                </p>
+            </div>
+            <!-- HERO CTA BUTTONS (Fade out on scroll) -->
+            <div id="hero-buttons" class="flex gap-4 mt-8 transition-all duration-500">
+                <a href="#metaphor-section" class="btn-hero-primary font-bubblegum text-xl px-6 py-2 rounded-full bg-deep-sea text-light hover:bg-reef-dark transition-transform hover:scale-105">
+                    What is KelpDesk?
+                </a>
+                <a href="#contact-section" class="btn-hero-secondary font-bubblegum text-xl px-6 py-2 rounded-full bg-sandlight text-deep-sea hover:bg-white transition-transform hover:scale-105">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+        <nav id="nav-right" class="hidden opacity-0 transition-opacity duration-500 flex items-center gap-6">
+            <div class="hidden md:flex gap-6 font-bubblegum text-xl text-sandlight">
+                <a href="#metaphor-section" class="hover:text-sandlight transition-colors">What is KelpDesk</a>
+                <a href="#contact-section" class="hover:text-sandlight transition-colors">Contact</a>
+            </div>
+            
+            <div class="flex gap-3">
+                <a href="https://www.youtube.com/channel/UCy0TfF7KNnAUFOckU6kJQLA" class="hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8 fill-light hover:fill-sandlight" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/kelpdesk" class="hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8 fill-light hover:fill-sandlight" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.073-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="https://www.x.com/kelpdesk" class="hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8 fill-light hover:fill-sandlight" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="hero-spacer" class="h-screen w-full transition-all duration-700 ease-in-out"></div>
+        <div id="content-bg-wrapper" class="relative z-10 bg-[#F8F0D8] shadow-[0_-20px_60px_rgba(0,0,0,0.1)]">
+            <section id="metaphor-section" class="relative min-h-screen flex flex-col items-center justify-center py-24 px-6 overflow-hidden">
+                
+                <div class="max-w-4xl text-center mb-16 animate-on-scroll z-10">
+                    <h2 class="font-bubblegum text-5xl md:text-7xl text-deep-sea mb-4 drop-shadow-sm">
+                        What is KelpDesk?
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl z-10">
+
+                    <div class="glass-card animate-on-scroll delay-100 group">
+                        <div class="icon-box relative">
+                            <svg viewBox="0 0 100 100" class="w-28 h-28 overflow-visible">
+                                <path d="M25,100 Q15,60 30,20" class="fill-none stroke-[4] opacity-50 animate-sway-slow stroke-round" style="stroke: var(--color-jade-water);" />
+                                <path d="M75,100 Q85,60 70,30" class="fill-none stroke-[4] opacity-50 animate-sway-slow stroke-round" style="stroke: var(--color-jade-water); animation-delay: -1s;" />
+                                <path d="M40,100 Q30,50 45,10" class="fill-none stroke-[5] animate-sway-medium stroke-round" style="stroke: var(--color-deep-sea);" />
+                                <path d="M60,100 Q70,50 55,15" class="fill-none stroke-[5] animate-sway-fast stroke-round" style="stroke: var(--color-deep-sea);" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">The Kelp Forest</h3>
+                        <p class="card-text">
+                            Trustworthy <strong>platforms and service providers</strong> establish to an ecosystem of safe e-commerce and community engagement.
+                        </p>
+                    </div>
+
+                    <div class="glass-card animate-on-scroll delay-200 group">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 100 100" class="w-28 h-28 overflow-visible">
+                                <g class="animate-swim-school">
+                                    <path d="M15,40 Q25,30 40,40 Q25,50 15,40 M40,40 L45,35 M40,40 L45,45" 
+                                        class="stroke-[3] fill-sandlight stroke-reef-dark" />
+                                    <path d="M5,65 Q12,57 22,65 Q12,73 5,65 M22,65 L26,61 M22,65 L26,69" 
+                                        class="stroke-[3] fill-sandlight stroke-reef-dark" style="animation-delay: 0.2s" />
+                                    <path d="M25,20 Q33,12 45,20 Q33,28 25,20 M45,20 L49,16 M45,20 L49,24" 
+                                        class="stroke-[3] fill-sandlight stroke-reef-dark" style="animation-delay: 0.4s" />
+                                </g>
+                                <circle cx="60" cy="30" r="2" class="animate-bubble fill-jade-water" />
+                                <circle cx="70" cy="50" r="1.5" class="animate-bubble fill-jade-water" style="animation-delay: 0.5s;" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">The Marinelife Community</h3>
+                        <p class="card-text">
+                            Confident <strong>users and customers</strong> traverse the cyberseas shielded by safe platforms, just as sealife relies on the kelp forest for protection.
+                        </p>
+                    </div>
+
+                    <div class="glass-card animate-on-scroll delay-300 group">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 100 100" class="w-28 h-28 overflow-visible">
+                                <line x1="50" y1="-20" x2="50" y2="40" class="stroke-[2] animate-line-tension stroke-dark opacity-40" />
+                                
+                                <g class="animate-drop-hook">
+                                    <path d="M50,40 L50,65 Q50,85 75,70" 
+                                        class="fill-none stroke-[5] stroke-round stroke-coral-dust" />
+                                    <path d="M75,70 L70,78" 
+                                        class="fill-none stroke-[4] stroke-round stroke-coral-dust" />
+                                    <circle cx="75" cy="70" r="2" class="fill-light" />
+                                </g>
+                            </svg>
+                        </div>
+                        <h3 class="card-title text-coral-dust">The Threat</h3>
+                        <p class="card-text">
+                            Phishing, fraud, theft, and other <strong>cybercrime</strong> aim to pull users out of safety.
+                        </p>
+                    </div>
+
+                    <div class="glass-card animate-on-scroll delay-400 group border-2 border-sandlight/60 bg-white/80">
+                        <div class="icon-box relative">
+                            <div class="absolute inset-0 rounded-full blur-2xl opacity-30 animate-pulse-slow bg-jade-water"></div>
+                            
+                            <svg viewBox="0 0 100 100" class="w-28 h-28 relative z-10 overflow-visible">
+                                <path d="M20,20 Q50,0 80,20 V50 Q80,90 50,100 Q20,90 20,50 Z" 
+                                    class="stroke-[4] fill-jade-water fill-opacity-10 stroke-deep-sea" />
+                                
+                                <path d="M50,25 V85 M30,45 H70 M35,65 H65" 
+                                    class="stroke-[4] stroke-round stroke-deep-sea" />
+                                
+                                <circle cx="78" cy="22" r="10" class="fill-sandlight" />
+                                <path d="M74,22 L77,25 L82,19" class="fill-none stroke-[2] stroke-dark" />
+                            </svg>
+                        </div>
+                        <h3 class="card-title">The KelpDesk</h3>
+                        <p class="card-text">
+                            <strong>Trust & Safety</strong> command centers that spot the hooks, cut the lines, and keep each platform secure.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="contact-section" class="relative z-10 py-24 px-6 flex flex-col items-center">
+                <div class="max-w-4xl text-center mb-12 animate-on-scroll z-10">
+                    <h2 class="font-bubblegum text-5xl md:text-7xl text-deep-sea drop-shadow-sm">
+                        Contact the KelpDesk
+                    </h2>
+                </div>
+                <div class="glass-card w-full max-w-3xl animate-on-scroll delay-200 !items-stretch !text-left p-8 md:p-12">
+                    <form id="kelp-contact-form" class="flex flex-col gap-6">
+                        <div>
+                            <label class="block font-bubblegum text-2xl text-deep-sea mb-3"></label>
+                            <div class="flex gap-6">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="userType" value="individual" class="accent-deep-sea w-5 h-5" checked>
+                                    <span class="text-dark font-medium">Individual</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="userType" value="organization" class="accent-deep-sea w-5 h-5">
+                                    <span class="text-dark font-medium">Organization</span>
+                                </label>
+                            </div>
+                            <div id="dynamic-help-text" class="p-4 rounded-lg border bg-jade-water/10 border-jade-water transition-colors duration-300">
+                                <h4 class="font-bold text-deep-sea mb-1">How we assist Individuals</h4>
+                                <p class="text-sm">We investigate cybercrime incidents, report them to the correct service providers, and document these tactics to educate the public and authorities.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="fullName" class="block text-sm font-bold text-reef-dark mb-1">Name <span class="text-coral-dust">*</span></label>
+                                <input type="text" id="fullName" name="fullName" required class="w-full bg-white/50 border border-ocean-mist rounded-lg p-3 focus:outline-none focus:border-deep-sea transition-colors">
+                            </div>
+                            <div>
+                                <label for="orgName" class="block text-sm font-bold text-reef-dark mb-1">Organization</label>
+                                <input type="text" id="orgName" name="orgName" placeholder="Optional" class="w-full bg-white/50 border border-ocean-mist rounded-lg p-3 focus:outline-none focus:border-deep-sea transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-reef-dark mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="contact-method w-full bg-white/50 border border-ocean-mist rounded-lg p-3 focus:outline-none focus:border-deep-sea transition-colors">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-bold text-reef-dark mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="contact-method w-full bg-white/50 border border-ocean-mist rounded-lg p-3 focus:outline-none focus:border-deep-sea transition-colors">
+                            </div>
+                        </div>
+                        <p class="text-xs text-mid italic -mt-2">* Please provide either Email or Phone so we can reach you.</p>
+
+                        <div>
+                            <label for="message" class="block text-sm font-bold text-reef-dark mb-1">How can we help?</label>
+                            <textarea id="message" name="message" rows="4" class="w-full bg-white/50 border border-ocean-mist rounded-lg p-3 focus:outline-none focus:border-deep-sea transition-colors"></textarea>
+                        </div>
+
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" name="subscribe" class="accent-deep-sea w-5 h-5 rounded">
+                            <span class="text-dark text-sm">Subscribe to the KelpDesk newsletter.</span>
+                        </label>
+
+                        <button type="submit" class="self-start bg-deep-sea text-light font-bubblegum text-xl px-8 py-3 rounded-full hover:bg-reef-dark hover:scale-105 transition-all shadow-lg hover:shadow-xl mt-2">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="success-message" class="hidden mt-6 bg-jade-water/20 border border-jade-water p-6 rounded-xl text-center">
+                        <h3 class="font-bubblegum text-2xl text-deep-sea">Message Received!</h3>
+                        <p class="text-dark">Thanks for reaching out to the KelpDesk. We'll be in touch shortly.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="relative z-10 bg-reef-dark/90 backdrop-blur-md text-sandlight py-8 border-t border-ocean-mist/30">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-birthstone text-3xl">
+                &copy; KelpDesk 2025
+            </div>
+            <div class="flex gap-6 text-sm font-medium">
+                <button id="btn-terms" class="hover:text-light transition-colors underline-offset-4 hover:underline">Terms of Service</button>
+                <button id="btn-privacy" class="hover:text-light transition-colors underline-offset-4 hover:underline">Privacy Statement</button>
+            </div>
+        </div>
+    </footer>
+<div id="modal-privacy" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="close-privacy-bg"></div>
+        <div class="relative bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl animate-on-scroll">
+            <button id="close-privacy-btn" class="absolute top-4 right-4 text-dark hover:text-coral-dust font-bold text-2xl">&times;</button>
+            <h2 class="font-bubblegum text-3xl text-deep-sea mb-4">Privacy Statement</h2>
+            <div class="text-dark space-y-4 font-roboto">
+                <p><strong>Our Privacy Vow:</strong> We pledge to protect your data. While we must share incident details to fight cybercrime, your personal identity is treated with the utmost confidentiality.</p>
+                
+                <h3 class="font-bold text-lg text-deep-sea mt-4">1. Information We Collect</h3>
+                <p>We collect information you provide directly via our contact forms, including your name, email address, phone number, and organization name. Crucially, we also collect technical details regarding cybercrime incidents, which may include evidence such as screenshots, email headers, malicious URLs, and communication logs.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">2. How We Use Your Information</h3>
+                <p><strong>For Individuals:</strong> We use your report data to investigate the incident, identify the responsible service providers (e.g., hosting companies, registrars), and file abuse reports. We may use anonymized, aggregate data to document these tactics and educate the public and authorities.</p>
+                <p><strong>For Organizations:</strong> We use provided information to assess your security posture, identify active threats targeting your platform, and consult on internal Trust & Safety operations.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">3. Information Sharing</h3>
+                <p>To fulfill our mission of "Fortifying Digital Institutions," we must share specific incident details with third parties. This includes:</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>Service Providers:</strong> We report abuse to third-party hosting providers, domain registrars, and platforms hosting malicious content to request takedowns.</li>
+                    <li><strong>Law Enforcement & Government:</strong> We may share incident documentation with authorities to aid in the broader fight against cybercrime.</li>
+                </ul>
+                <p class="mt-2">We do not sell your personal contact information to advertisers.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">4. Data Security</h3>
+                <p>We implement appropriate technical and organizational measures to protect the data you entrust to the KelpDesk against unauthorized access, alteration, or disclosure.</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-terms" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="close-terms-bg"></div>
+        <div class="relative bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl animate-on-scroll">
+            <button id="close-terms-btn" class="absolute top-4 right-4 text-dark hover:text-coral-dust font-bold text-2xl">&times;</button>
+            <h2 class="font-bubblegum text-3xl text-deep-sea mb-4">Terms of Service</h2>
+            <div class="text-dark space-y-4 font-roboto">
+                <p>Welcome to KelpDesk. By using our investigation, reporting, and consultancy services, you agree to the following terms.</p>
+                
+                <h3 class="font-bold text-lg text-deep-sea mt-4">1. Nature of Services</h3>
+                <p>KelpDesk acts as a specialized Trust & Safety consultancy and reporting agency. For individuals, we investigate online threats and report cybercrime to relevant third-party service providers on your behalf. For organizations, we provide advisory services to align department objectives and build internal Trust & Safety structures.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">2. No Guarantee of Outcome</h3>
+                <p>While we leverage our expertise to investigate, identify, and report abuse, <strong>KelpDesk does not own or control the external platforms where cybercrime occurs.</strong> We cannot guarantee that a third-party service provider will take down content, nor that law enforcement will pursue a specific case. Our role is to identify, document, and advocate for resolution.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">3. User Responsibilities</h3>
+                <p>You agree to provide truthful and accurate information when submitting reports. You confirm that you are the victim of the incident or are authorized to report it. Knowingly submitting false abuse reports is a violation of these terms and may result in the termination of our services to you.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">4. Limitation of Liability</h3>
+                <p>KelpDesk is not liable for any direct or indirect damages resulting from the cybercrime incidents you report, nor for the failure of third-party platforms to act on our reports. Our liability is strictly limited to the professional delivery of our investigation and consultancy services.</p>
+
+                <h3 class="font-bold text-lg text-deep-sea mt-4">5. Intellectual Property</h3>
+                <p>The content, branding, methodologies, and educational materials produced by KelpDesk are the property of KelpDesk. Anonymized case data may be used by KelpDesk for public education and reporting on cybercrime trends.</p>
+            </div>
+        </div>
+    </div>
+    <script src="main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+:root {
+  /* Primary */
+  --color-deep-sea: #408080;      /* Brand Core */
+  --color-jade-water: #68A098;    /* Operational UI */
+  --color-sandlight: #F8D8B0;     /* Warmth & Buttons */
+
+  /* Secondary */
+  --color-ocean-mist: #A0B0A8;    /* Backgrounds */
+  --color-coral-dust: #D8A8A0;    /* Highlights/Alerts */
+  --color-reef-dark: #386868;     /* Structure/Footer */
+
+  /* Neutrals */
+  --color-light: #F8F0D8;         /* Text on Dark */
+  --color-mid: #909098;           /* Dividers */
+  --color-dark: #404040;          /* Body Text */
+}
+
+/* Custom Font Utilities */
+.font-bubblegum { font-family: 'Bubblegum Sans', cursive; }
+.font-birthstone { font-family: 'Birthstone', cursive; }
+
+/* Custom Color Utilities */
+.text-deep-sea { color: var(--color-deep-sea); }
+.text-sandlight { color: var(--color-sandlight); }
+.text-dark { color: var(--color-dark); }
+.bg-sandlight { background-color: var(--color-sandlight); }
+.bg-ocean-mist { background-color: var(--color-ocean-mist); }
+.border-sandlight { border-color: var(--color-sandlight); }
+
+/* --- HEADER ANIMATION STATES --- */
+
+/* 1. Header Container Shrink */
+#main-header.shrink {
+    height: 80px; /* Shrinks from h-screen to 80px */
+    background: rgba(1, 79, 87, 0.9); /* Glass effect background */
+    backdrop-filter: blur(10px);
+    flex-direction: row; /* Stacks to Row */
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Brand Container (Logo + Text) Re-layout */
+#main-header.shrink #brand-container {
+    flex-direction: row;
+    gap: 1rem;
+    width: auto;
+}
+
+/* 3. Logo Wrapper Shrink */
+/* Resize the container div instead of the image directly */
+#main-header.shrink #logo-wrapper {
+    width: 48px; 
+    margin: 0;
+}
+
+/* Cross-Fade Logic */
+#main-header.shrink #logo-big {
+    opacity: 0; /* Hide the complex one */
+}
+
+#main-header.shrink #logo-small {
+    opacity: 1; /* Show the simple one */
+}
+
+/* 4. Title Shrink */
+#main-header.shrink #brand-title {
+    font-size: 1.8rem; /* 8xl -> 1.8rem */
+    margin-bottom: 0;
+    color: #F8F0D8; /* Change color to light for contrast on dark header */
+}
+
+/* 5. Tagline Fade Out/Shrink */
+/* Usually taglines are too big for headers, so we hide it or make it tiny */
+#main-header.shrink #brand-tagline {
+    font-size: 0;   /* Effectively hides it smoothly */
+    opacity: 0;
+    height: 0;
+    margin: 0;
+}
+
+/* 6. Hero Buttons Fade Out */
+/* Default state (at top of page) */
+#hero-buttons {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Shrink state (scrolled down) */
+#main-header.shrink #hero-buttons {
+    opacity: 0;
+    pointer-events: none; /* Prevents clicking hidden buttons */
+    height: 0;
+    margin: 0;
+    transform: scale(0.8);
+    overflow: hidden;
+}
+
+/* 7. Right Nav Fade In */
+/* Only visible when scrolled */
+#main-header.shrink #nav-right {
+    display: flex;
+    opacity: 1;
+}
+
+/* 6. Buttons Resize */
+#main-header.shrink #btn-container {
+    margin-top: 0;
+    transform: scale(0.8);
+}
+
+/* Spacer Shrink State*/
+#hero-spacer.shrink-spacer {
+    height: 80px;
+    transition: height 0.7s ease-in-out;
+}
+
+/* Remove scrollbar for cleaner look */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(64, 128, 128, 0.5); border-radius: 4px; }
+
+/* Animation Base States */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Animation Active State */
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay helper */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* --- METAPHOR SECTION STYLES --- */
+
+/* Centered Glass Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2rem; /* Rounder corners */
+    padding: 3rem 2rem;  /* More padding for 'punchy' look */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    text-align: center;  /* Centers text */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 20px 40px -10px rgba(64, 128, 128, 0.25);
+}
+
+/* Icon Container */
+.icon-box {
+    height: 120px;
+    width: 120px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Typography Overrides */
+.card-title {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    color: var(--color-deep-sea);
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-dark);
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.text-coral-dust { color: var(--color-coral-dust); }
+
+/* SVG Stroke Utilities (Maps CSS vars to SVG props) */
+.stroke-deep-sea { stroke: var(--color-deep-sea); }
+.stroke-jade-water { stroke: var(--color-jade-water); }
+.stroke-coral-dust { stroke: var(--color-coral-dust); }
+.stroke-sandlight { stroke: var(--color-sandlight); }
+.stroke-reef-dark { stroke: var(--color-reef-dark); }
+.stroke-dark { stroke: var(--color-dark); }
+.fill-sandlight { fill: var(--color-sandlight); }
+.fill-jade-water { fill: var(--color-jade-water); }
+.fill-light { fill: var(--color-light); }
+.stroke-round { stroke-linecap: round; stroke-linejoin: round; }
+
+/* --- ANIMATIONS --- */
+
+/* 1. Organic Kelp Sway (Pivot at bottom) */
+@keyframes sway-transform {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(4deg); }
+}
+.animate-sway-slow { 
+    animation: sway-transform 5s ease-in-out infinite; 
+    transform-origin: 50% 100%; /* Pivot at the very bottom of the SVG canvas */
+}
+.animate-sway-medium { 
+    animation: sway-transform 4s ease-in-out infinite reverse; 
+    transform-origin: 50% 100%; 
+}
+.animate-sway-fast { 
+    animation: sway-transform 3.5s ease-in-out infinite; 
+    transform-origin: 50% 100%; 
+}
+
+/* 2. Fish School Swim */
+.animate-swim-school {
+    animation: swim-float 8s ease-in-out infinite;
+}
+@keyframes swim-float {
+    0% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(5px) translateY(-3px); }
+    50% { transform: translateX(0) translateY(0); }
+    75% { transform: translateX(3px) translateY(3px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+.animate-bubble {
+    animation: bubble-rise 4s linear infinite;
+    opacity: 0;
+}
+@keyframes bubble-rise {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-20px); opacity: 0; }
+}
+
+/* 3. Fisherman Hook (Tension & Drop) */
+.animate-drop-hook {
+    animation: fishing-cycle 5s ease-in-out infinite;
+    transform-origin: top center;
+}
+@keyframes fishing-cycle {
+    0%, 100% { transform: translateY(-5px) rotate(0deg); }
+    20% { transform: translateY(0px) rotate(2deg); } /* Gentle bob */
+    40% { transform: translateY(15px) rotate(-5deg); } /* The Drop! */
+    45% { transform: translateY(15px) rotate(5deg); }  /* The Snag */
+    60% { transform: translateY(-5px) rotate(0deg); } /* The Reel in */
+}
+.animate-line-tension {
+    animation: line-stretch 5s ease-in-out infinite;
+    transform-origin: top center;
+}
+@keyframes line-stretch {
+    0%, 100% { transform: scaleY(1); }
+    40% { transform: scaleY(1.4); } /* Line stretches when hook drops */
+}
+
+/* 4. Pulse */
+.animate-pulse-slow {
+    animation: pulse-glow 3s infinite;
+}
+@keyframes pulse-glow {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.1); opacity: 0.4; }
+}
+
+/* --- FORM STYLES --- */
+
+/* Form Input Focus States */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(104, 160, 152, 0.2); /* Jade Water glow */
+}
+
+/* Custom Checkbox Alignment */
+input[type="checkbox"], input[type="radio"] {
+    cursor: pointer;
+}
+
+/* Placeholder Colors */
+::placeholder {
+    color: var(--color-ocean-mist);
+    opacity: 1;
+}
+
+/* Footer Link Hover Animation */
+footer a {
+    position: relative;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-sandlight);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+footer a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* --- MODAL STYLES --- */
+#modal-privacy, #modal-terms {
+    transition: opacity 0.3s ease;
+}
