@@ -223,27 +223,6 @@
     transform-origin: 50% 100%; 
 }
 
-/* 2. Fish School Swim */
-.animate-swim-school {
-    animation: swim-float 8s ease-in-out infinite;
-}
-@keyframes swim-float {
-    0% { transform: translateX(0) translateY(0); }
-    25% { transform: translateX(5px) translateY(-3px); }
-    50% { transform: translateX(0) translateY(0); }
-    75% { transform: translateX(3px) translateY(3px); }
-    100% { transform: translateX(0) translateY(0); }
-}
-.animate-bubble {
-    animation: bubble-rise 4s linear infinite;
-    opacity: 0;
-}
-@keyframes bubble-rise {
-    0% { transform: translateY(0); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-20px); opacity: 0; }
-}
-
 /* 3. Fisherman Hook (Tension & Drop) */
 .animate-drop-hook {
     animation: fishing-cycle 5s ease-in-out infinite;
@@ -255,23 +234,6 @@
     40% { transform: translateY(15px) rotate(-5deg); } /* The Drop! */
     45% { transform: translateY(15px) rotate(5deg); }  /* The Snag */
     60% { transform: translateY(-5px) rotate(0deg); } /* The Reel in */
-}
-.animate-line-tension {
-    animation: line-stretch 5s ease-in-out infinite;
-    transform-origin: top center;
-}
-@keyframes line-stretch {
-    0%, 100% { transform: scaleY(1); }
-    40% { transform: scaleY(1.4); } /* Line stretches when hook drops */
-}
-
-/* 4. Pulse */
-.animate-pulse-slow {
-    animation: pulse-glow 3s infinite;
-}
-@keyframes pulse-glow {
-    0%, 100% { transform: scale(1); opacity: 0.2; }
-    50% { transform: scale(1.1); opacity: 0.4; }
 }
 
 /* --- FORM STYLES --- */
@@ -318,4 +280,97 @@ footer a:hover::after {
 /* --- MODAL STYLES --- */
 #modal-privacy, #modal-terms {
     transition: opacity 0.3s ease;
+}
+
+/* --- NEW KELP ANIMATIONS --- */
+.kelp-surge-stipes {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: surgeStipes 12s ease-in-out infinite alternate;
+}
+
+.blade-surge-reaction {
+  transform-origin: 0 0;
+  animation: surgeBlades 12s ease-in-out infinite alternate;
+}
+
+/* KEYFRAMES */
+@keyframes surgeStipes {
+  0% { transform: rotate(-4deg); } 
+  100% { transform: rotate(4deg); } 
+}
+
+@keyframes surgeBlades {
+  0% { transform: rotate(-15deg); } 
+  100% { transform: rotate(15deg); } 
+}
+
+/* --- GARIBALDI ANIMATIONS --- */
+
+/* 1. Tail Sway: Pivots at the base */
+.anim-tail {
+    transform-box: fill-box;
+    transform-origin: left center; /* Pivots where it attaches to body */
+    animation: tailSway 1.5s ease-in-out infinite alternate;
+}
+
+/* 2. Pectoral Fin: The "Rowing" motion */
+.anim-fin-row {
+    transform-box: fill-box;
+    transform-origin: top left;
+    animation: finRow 2s ease-in-out infinite;
+}
+
+/* 3. Hover: The whole fish gently bobs */
+.garibaldi-whole {
+    animation: fishHover 4s ease-in-out infinite alternate;
+}
+
+@keyframes tailSway {
+    0% { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+}
+
+@keyframes finRow {
+    0% { transform: rotate(0deg) scaleX(1); }
+    20% { transform: rotate(-25deg) scaleX(0.8); } /* Power stroke */
+    100% { transform: rotate(0deg) scaleX(1); }
+}
+
+@keyframes fishHover {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+/* --- HOOK & LINE PHYSICS --- */
+
+/* 1. Vertical Bob: Moves the whole assembly (Line + Hook) up and down */
+.animate-bob-vertical {
+    animation: bobVertical 4s ease-in-out infinite alternate;
+}
+
+/* 2. Hook Sway: The hook gently swings like a pendulum at the end of the line */
+.animate-hook-sway {
+    transform-origin: 0 0; /* Pivots exactly at the knot */
+    animation: hookSway 3s ease-in-out infinite alternate;
+}
+
+@keyframes bobVertical {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(15px); } /* Bobs down 15px */
+}
+
+@keyframes hookSway {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+/* --- SHIELD PLANT ANIMATION --- */
+.animate-breathe {
+    animation: breatheFill 4s ease-in-out infinite alternate;
+}
+
+@keyframes breatheFill {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); } /* Pulses outward to "fill" the shield */
 }
